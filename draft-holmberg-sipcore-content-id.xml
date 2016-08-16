@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY RFC0822 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0822.xml">
+<!ENTITY RFC0822 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC0822 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5322.xml">
 <!ENTITY RFC2045 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2045.xml">
 <!ENTITY RFC2392 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2392.xml">
 <!ENTITY RFC3261 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3261.xml">
@@ -177,6 +178,14 @@
       </section>
     </section>
 
+    <section title="Conventions">
+    <t>
+      The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in <xref target="RFC2119"></xref>.
+    </t>
+    </section>
+
     <section anchor="Content-ID" title="Content-ID header field">
       <section anchor="Content-ID-Introduction" title="Introduction">
         <t>
@@ -190,7 +199,7 @@
         </t><t>
           Content-ID = "Content-ID" HCOLON msg-id
         </t><t>
-          NOTE: msg-id is specified in <xref target="RFC0822" pageno="false" format="default"/>.
+          NOTE: msg-id is specified in <xref target="RFC5322" pageno="false" format="default"/>.
         </t>
       </section>
 
@@ -280,9 +289,10 @@
   </middle>
   <back>
     <references title="Normative References">
-      <?rfc include="reference.RFC.0822"?>
       <?rfc include="reference.RFC.2045"?>
+      <?rfc include="reference.RFC.2119"?>
       <?rfc include="reference.RFC.2392"?>
+      <?rfc include="reference.RFC.5322"?>
       <?rfc include="reference.RFC.3261"?>
       <?rfc include="reference.RFC.5368"?>
       <?rfc include="reference.RFC.5621"?>

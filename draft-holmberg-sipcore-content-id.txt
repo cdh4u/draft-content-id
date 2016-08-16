@@ -68,18 +68,19 @@ Table of Contents
        1.4.1.  Example 1 . . . . . . . . . . . . . . . . . . . . . .   3
        1.4.2.  Example 2 . . . . . . . . . . . . . . . . . . . . . .   4
      1.5.  Solution  . . . . . . . . . . . . . . . . . . . . . . . .   4
-   2.  Content-ID header field . . . . . . . . . . . . . . . . . . .   4
-     2.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .   4
-     2.2.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     2.3.  Semantic  . . . . . . . . . . . . . . . . . . . . . . . .   5
-     2.4.  Procedures  . . . . . . . . . . . . . . . . . . . . . . .   5
-       2.4.1.  UA procedures . . . . . . . . . . . . . . . . . . . .   5
-       2.4.2.  Proxy procedures  . . . . . . . . . . . . . . . . . .   5
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-     4.1.  Header Field  . . . . . . . . . . . . . . . . . . . . . .   6
-   5.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-   6.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
+   2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   3.  Content-ID header field . . . . . . . . . . . . . . . . . . .   5
+     3.1.  Introduction  . . . . . . . . . . . . . . . . . . . . . .   5
+     3.2.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     3.3.  Semantic  . . . . . . . . . . . . . . . . . . . . . . . .   5
+     3.4.  Procedures  . . . . . . . . . . . . . . . . . . . . . . .   5
+       3.4.1.  UA procedures . . . . . . . . . . . . . . . . . . . .   5
+       3.4.2.  Proxy procedures  . . . . . . . . . . . . . . . . . .   6
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+     5.1.  Header Field  . . . . . . . . . . . . . . . . . . . . . .   6
+   6.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
@@ -104,8 +105,7 @@ Table of Contents
    only, there are no body parts and there is also no defined method how
    to convey an ID value uniquely identifying the body part.  Also, the
    Content-ID header field is not a defined SIP header field and thus
-   the Content-ID header field cannot be included in the header fields
-   of a SIP message.
+
 
 
 
@@ -113,6 +113,9 @@ Holmberg & Sedlacek     Expires February 17, 2017               [Page 2]
 
 Internet-Draft              Content-ID-in-SIP                August 2016
 
+
+   the Content-ID header field cannot be included in the header fields
+   of a SIP message.
 
 1.2.  Referencing the ID value uniquely identifying the body
 
@@ -158,10 +161,7 @@ Internet-Draft              Content-ID-in-SIP                August 2016
    This body contains the location information and can be e.g. of the
    application/pidf+xml MIME type.
 
-   However, due to [RFC6442] requiring inclusion of a Geolocation header
-   field referencing the body part with the body containing the location
-   information, the UAC needs to include a message-body of multipart/
-   mixed MIME type in the INVITE request, and the UAC needs to include a
+
 
 
 
@@ -170,6 +170,10 @@ Holmberg & Sedlacek     Expires February 17, 2017               [Page 3]
 Internet-Draft              Content-ID-in-SIP                August 2016
 
 
+   However, due to [RFC6442] requiring inclusion of a Geolocation header
+   field referencing the body part with the body containing the location
+   information, the UAC needs to include a message-body of multipart/
+   mixed MIME type in the INVITE request, and the UAC needs to include a
    body part with the application/pidf+xml body and associated Content-
    ID header field in the multipart/mixed body.
 
@@ -208,15 +212,11 @@ Internet-Draft              Content-ID-in-SIP                August 2016
 
    included in the header fields of the SIP message.
 
-2.  Content-ID header field
+2.  Conventions
 
-2.1.  Introduction
-
-   This section defines the usage of the Content-ID header field for
-   SIP.
-
-
-
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
 
 
 
@@ -226,15 +226,22 @@ Holmberg & Sedlacek     Expires February 17, 2017               [Page 4]
 Internet-Draft              Content-ID-in-SIP                August 2016
 
 
-2.2.  Syntax
+3.  Content-ID header field
+
+3.1.  Introduction
+
+   This section defines the usage of the Content-ID header field for
+   SIP.
+
+3.2.  Syntax
 
    The ABNF for the Content-ID header fields is:
 
    Content-ID = "Content-ID" HCOLON msg-id
 
-   NOTE: msg-id is specified in [RFC0822].
+   NOTE: msg-id is specified in [RFC5322].
 
-2.3.  Semantic
+3.3.  Semantic
 
    A Content-ID header field included in header fields of a SIP message
    indicates a globally unique identification of a body part consisting
@@ -252,9 +259,9 @@ Internet-Draft              Content-ID-in-SIP                August 2016
    The Content-ID header field can be included in any SIP message which
    is allowed to contain a message-body.
 
-2.4.  Procedures
+3.4.  Procedures
 
-2.4.1.  UA procedures
+3.4.1.  UA procedures
 
    A UA MAY include a Content-ID header field in any SIP message which
    is allowed to contain a message-body.
@@ -265,14 +272,7 @@ Internet-Draft              Content-ID-in-SIP                August 2016
    The UA MUST set the value of the Content-ID header field to a
    globally unique value.
 
-2.4.2.  Proxy procedures
 
-   A proxy MUST NOT add a Content-ID header field in a SIP message.
-
-   A proxy MUST NOT modify a Content-ID header field included in a SIP
-   message.
-
-   A proxy MUST NOT delete a Content-ID header field from a SIP message.
 
 
 
@@ -282,7 +282,16 @@ Holmberg & Sedlacek     Expires February 17, 2017               [Page 5]
 Internet-Draft              Content-ID-in-SIP                August 2016
 
 
-3.  Security Considerations
+3.4.2.  Proxy procedures
+
+   A proxy MUST NOT add a Content-ID header field in a SIP message.
+
+   A proxy MUST NOT modify a Content-ID header field included in a SIP
+   message.
+
+   A proxy MUST NOT delete a Content-ID header field from a SIP message.
+
+4.  Security Considerations
 
    The Content-ID header field value MUST NOT reveal sensitive user
    information.
@@ -292,12 +301,12 @@ Internet-Draft              Content-ID-in-SIP                August 2016
    that can be used to decrypt the message-body content from the
    Content-ID header field value.
 
-4.  IANA Considerations
+5.  IANA Considerations
 
    This specification registers a new SIP header field according to the
    procedures in [RFC3261].
 
-4.1.  Header Field
+5.1.  Header Field
 
    [RFC EDITOR NOTE: Please replace XXXX with the RFC number of this
    document when publishing]
@@ -308,27 +317,18 @@ Internet-Draft              Content-ID-in-SIP                August 2016
 
       Compact Form:  none
 
-5.  Change Log
+6.  Change Log
 
    [RFC EDITOR NOTE: Please remove this section when publishing]
 
    TBD
 
-6.  Normative References
-
-   [RFC0822]  Crocker, D., "STANDARD FOR THE FORMAT OF ARPA INTERNET
-              TEXT MESSAGES", STD 11, RFC 822, DOI 10.17487/RFC0822,
-              August 1982, <http://www.rfc-editor.org/info/rfc822>.
+7.  Normative References
 
    [RFC2045]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
               Extensions (MIME) Part One: Format of Internet Message
               Bodies", RFC 2045, DOI 10.17487/RFC2045, November 1996,
               <http://www.rfc-editor.org/info/rfc2045>.
-
-   [RFC2392]  Levinson, E., "Content-ID and Message-ID Uniform Resource
-              Locators", RFC 2392, DOI 10.17487/RFC2392, August 1998,
-              <http://www.rfc-editor.org/info/rfc2392>.
-
 
 
 
@@ -337,6 +337,19 @@ Holmberg & Sedlacek     Expires February 17, 2017               [Page 6]
 
 Internet-Draft              Content-ID-in-SIP                August 2016
 
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC2392]  Levinson, E., "Content-ID and Message-ID Uniform Resource
+              Locators", RFC 2392, DOI 10.17487/RFC2392, August 1998,
+              <http://www.rfc-editor.org/info/rfc2392>.
+
+   [RFC5322]  Resnick, P., Ed., "Internet Message Format", RFC 5322,
+              DOI 10.17487/RFC5322, October 2008,
+              <http://www.rfc-editor.org/info/rfc5322>.
 
    [RFC3261]  Rosenberg, J., Schulzrinne, H., Camarillo, G., Johnston,
               A., Peterson, J., Sparks, R., Handley, M., and E.
@@ -371,6 +384,16 @@ Authors' Addresses
    Email: christer.holmberg@ericsson.com
 
 
+
+
+
+
+
+Holmberg & Sedlacek     Expires February 17, 2017               [Page 7]
+
+Internet-Draft              Content-ID-in-SIP                August 2016
+
+
    Ivo Sedlacek
    Ericsson
    Sokolovska 79
@@ -389,4 +412,37 @@ Authors' Addresses
 
 
 
-Holmberg & Sedlacek     Expires February 17, 2017               [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Holmberg & Sedlacek     Expires February 17, 2017               [Page 8]
