@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC0822 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0822.xml">
+<!ENTITY RFC2045 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2045.xml">
+<!ENTITY RFC2392 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2392.xml">
+<!ENTITY RFC3261 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3261.xml">
+<!ENTITY RFC5368 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5368.xml">
+<!ENTITY RFC5621 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5621.xml">
+<!ENTITY RFC6442 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6442.xml">
+]>
+<?rfc toc="yes" ?>
+<?rfc compact="yes" ?>
+<?rfc subcompact="yes" ?>
+<?rfc sortrefs="no" ?>
+<?rfc strict="yes" ?>
+<rfc ipr="trust200902" category="std" docName="draft-holmberg-sipcore-content-id-00" obsoletes="" updates="" submissionType="IETF" xml:lang="en">
+  <front>
+    <title abbrev="Content-ID-in-SIP">
+      Content ID header field in Session Initiation Protocol (SIP)
+    </title>
+      <author initials="C.H." surname="Holmberg" fullname="Christer Holmberg">
+      <organization>Ericsson</organization>
+      <address>
+        <postal>
+          <street>Hirsalantie 11</street>
+          <code>02420</code>
+          <city>Jorvas</city>
+          <country>Finland</country>
+        </postal>
+        <email>christer.holmberg@ericsson.com</email>
+      </address>
+    </author>
+    <author initials="I.S." surname="Sedlacek" fullname="Ivo Sedlacek">
+      <organization>Ericsson</organization>
+      <address>
+        <postal>
+          <street>Sokolovska 79</street>
+          <code>18600</code>
+          <city>Praha</city>
+          <country>Czech Republic</country>
+        </postal>
+        <email>ivo.sedlacek@ericsson.com</email>
+      </address>
+    </author>
+
+    <date year="2016"/>
+    <area>Transport</area>
+    <workgroup>SIPCORE Working Group</workgroup>
+    <keyword>SIP</keyword>
+    <abstract>
+      <t>
+        This document specifies the Content-ID header field for usage in the Session Initiation Protocol (SIP).
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section title="Introduction" toc="default">
+      <section title="Setting up ID value uniquely identifying the body" toc="default">
+        <t>
+          A SIP message consists of a start-line, one or more header fields, an
+          empty line indicating the end of the header fields, and
+          an optional message-body, as specified in <xref target="RFC3261" pageno="false" format="default"/>.
+        </t><t>
+          A message-body of the SIP message can contain one body only or can contain several bodies,
+          as specified in <xref target="RFC3261" pageno="false" format="default"/>.
+        </t><t>
+          When the message-body of the SIP message contains several bodies, each body is included in a body part encoded
+          using <xref target="RFC2045" pageno="false" format="default"/>
+          format in the message-body of the SIP message, as specified in
+          <xref target="RFC5621" pageno="false" format="default"/>.
+
+          A body part encoded using <xref target="RFC2045" pageno="false" format="default"/> format
+          can contain a Content-ID header field with an ID value uniquely identifying the body part, as
+          specified in <xref target="RFC2045" pageno="false" format="default"/>.
+
+        </t><t>
+          However, when the message-body of the SIP message contains one body only, there are no body parts
+          and there is also no defined method
+          how to convey an ID value uniquely identifying the body part. Also, the Content-ID header field is not a defined
+          SIP header field and thus the Content-ID header field cannot be included in the header fields of a SIP message.
+        </t>
+      </section>
+      <section title="Referencing the ID value uniquely identifying the body" toc="default">
+        <t>
+          A SIP header field can contain a reference to a body part using a Content-ID URL, as specified
+          in <xref target="RFC5621" pageno="false" format="default"/>.
+        </t><t>
+          The Content-ID URL is specified in <xref target="RFC2392" pageno="false" format="default"/>.
+          <xref target="RFC2392" pageno="false" format="default"/> also specifies how to discover the body
+          part referenced by a Content-ID URL.
+        </t><t>
+          Examples of a SIP header field referencing a body part using a Content-ID URL are:
+          <list style="symbols">
+            <t>
+              <xref target="RFC6442" pageno="false" format="default"/> specifies how a Geolocation header
+              field references a body part using a Content-ID URL, for providing location.
+            </t><t>
+              <xref target="RFC5368" pageno="false" format="default"/> specifies how a Refer-To header field
+              references a body part using a Content-ID URL, to provide a list of targets.
+            </t>
+          </list>
+        </t>
+      </section>
+      <section title="Problem statement" toc="default">
+        <t>
+          Since the Content-ID header field is not a defined SIP header field:
+          <list style="symbols">
+            <t>
+            When solely one body needs to be transported in a SIP message, if a UAC does not need
+            to include in the SIP message a SIP header field referencing the body part, the UAC sets
+            the message-body to the body.
+            </t><t>
+            However, when solely one body needs to be transported in a SIP message, if a UAC needs
+            to include in the SIP message a SIP header field referencing the body part, then the UAC needs
+            to include the body in a body part encoded using the <xref target="RFC2045" pageno="false" format="default"/> format.
+            I.e., the UAC sets the message-body using <xref target="RFC2045" pageno="false" format="default"/>
+            format and includes one body part with the body and associated Content-ID header field.
+            </t>
+          </list>
+        </t>
+      </section>
+      <section title="Examples of the problem" toc="default">
+        <section title="Example 1" toc="default">
+          <t>
+            If a UAC sends an INVITE request conveying location as specified in <xref target="RFC6442" pageno="false" format="default"/>,
+            if the UAC decides not to include an SDP offer, and if the location is conveyed by value, then the UAC needs to include
+            one body only in the INVITE request.
+          </t><t>
+            This body contains the location information and can be e.g. of the application/pidf+xml MIME type.
+          </t><t>
+            However, due to <xref target="RFC6442" pageno="false" format="default"/> requiring inclusion of a Geolocation
+            header field referencing the body part with the body containing the location information,
+            the UAC needs to include a message-body of multipart/mixed MIME type in the INVITE request,
+            and the UAC needs to include a body part with
+            the application/pidf+xml body and associated Content-ID header field in the multipart/mixed body.
+          </t>
+        </section>
+        <section title="Example 2" toc="default">
+          <t>
+            If a UAC sends an REFER request including a list of targets as specified in <xref target="RFC5368" pageno="false" format="default"/>,
+            then the UAC needs to include one body only in the REFER request.
+          </t><t>
+            This body contains the list of targets and is of the application/resource-lists+xml MIME type.
+          </t><t>
+            However, due to <xref target="RFC5368" pageno="false" format="default"/> requiring inclusion of a Refer-To header field
+            referencing the body part containing the list of targets,
+            the UAC needs to include a message-body of the multipart/mixed MIME type in the REFER request
+            and the UE needs to include a body part with
+            the application/resource-lists+xml body and associated Content-ID header field in the multipart/mixed body.
+          </t>
+        </section>
+      </section>
+      <section title="Solution" toc="default">
+        <t>
+          To avoid the unnecessary usage of the <xref target="RFC2045" pageno="false" format="default"/> format when only
+          one body needs to be included in a SIP message, this document specifies a Content-ID header field as a SIP header field.
+        </t><t>
+          The Content-ID header field included in header fields of a SIP message identifies a body part consisting of the message-body of the SIP message and:
+          <list style="symbols">
+            <t>
+              a Content-Disposition header field;
+            </t><t>
+              a Content-Encoding header field;
+            </t><t>
+              a Content-Language header field;
+            </t><t>
+              a Content-Length header field;
+            </t><t>
+              a Content-Type header field; and
+            </t><t>
+              a Content-ID header field;
+            </t>
+          </list>
+          included in the header fields of the SIP message.
+        </t>
+      </section>
+    </section>
+
+    <section anchor="Content-ID" title="Content-ID header field">
+      <section anchor="Content-ID-Introduction" title="Introduction">
+        <t>
+          This section defines the usage of the Content-ID header field for SIP.
+        </t>
+      </section>
+
+      <section anchor="Content-ID-Syntax" title="Syntax">
+        <t>
+          The ABNF for the Content-ID header fields is:
+        </t><t>
+          Content-ID = "Content-ID" HCOLON msg-id
+        </t><t>
+          NOTE: msg-id is specified in <xref target="RFC0822" pageno="false" format="default"/>.
+        </t>
+      </section>
+
+      <section anchor="Content-ID-Semantic" title="Semantic">
+        <t>
+          A Content-ID header field included in header fields of a SIP message indicates a globally
+          unique identification of a body part consisting of the message-body of the SIP message and:
+          <list style="symbols">
+            <t>
+              a Content-Disposition header field;
+            </t><t>
+              a Content-Encoding header field;
+            </t><t>
+              a Content-Language header field;
+            </t><t>
+              a Content-Length header field;
+            </t><t>
+              a Content-Type header field; and
+            </t><t>
+              a Content-ID header field;
+            </t>
+          </list>
+          included in header fields of the SIP message.
+        </t>
+        <t>
+          The Content-ID header field can be included in any SIP message which is allowed to contain
+          a message-body.
+        </t>
+      </section>
+      <section anchor="Content-ID-Procedures" title="Procedures">
+        <section anchor="Content-ID-UA-Procedures" title="UA procedures">
+          <t>
+            A UA MAY include a Content-ID header field in any SIP message which is allowed to contain a message-body.
+          </t><t>
+            A UA MUST NOT include a Content-ID header field in any SIP message which is not allowed to contain a message-body.
+          </t><t>
+            The UA MUST set the value of the Content-ID header field to a globally unique value.
+          </t>
+        </section>
+        <section anchor="Content-ID-proxy-Procedures" title="Proxy procedures">
+          <t>
+            A proxy MUST NOT add a Content-ID header field in a SIP message.
+          </t><t>
+            A proxy MUST NOT modify a Content-ID header field included in a SIP message.
+          </t><t>
+            A proxy MUST NOT delete a Content-ID header field from a SIP message.
+          </t>
+        </section>
+      </section>
+    </section>
+
+    <section anchor="section.sec" title="Security Considerations">
+      <t>
+        The Content-ID header field value MUST NOT reveal sensitive user information.
+      </t><t>
+        If the message-body associated with the Content-ID header field contains encrypted content, it MUST NOT be
+        possible to derive a key that can be used to decrypt
+        the message-body content from the Content-ID header field value.
+      </t>
+    </section>
+    <section anchor="section.iana" title="IANA Considerations">
+      <t>
+        This specification registers a new SIP header field according to the procedures
+        in <xref target="RFC3261" pageno="false" format="default"/>.
+      </t>
+      <section anchor="section.iana.header" title="Header Field">
+        <t>[RFC EDITOR NOTE: Please replace XXXX with the RFC number of this document when publishing]</t>
+        <figure>
+          <artwork><![CDATA[
+   RFC Number:  RFC XXXX
+
+   Header Field Name:  Content-ID
+
+   Compact Form:  none
+       ]]></artwork>
+        </figure>
+      </section>
+    </section>
+    <section title="Change Log">
+      <t>
+        [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        TBD
+      </t>
+    </section>
+  </middle>
+  <back>
+    <references title="Normative References">
+      <?rfc include="reference.RFC.0822"?>
+      <?rfc include="reference.RFC.2045"?>
+      <?rfc include="reference.RFC.2392"?>
+      <?rfc include="reference.RFC.3261"?>
+      <?rfc include="reference.RFC.5368"?>
+      <?rfc include="reference.RFC.5621"?>
+      <?rfc include="reference.RFC.6442"?>
+    </references>
+  </back>
+</rfc>
