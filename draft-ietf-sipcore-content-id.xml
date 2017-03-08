@@ -15,7 +15,7 @@
 <?rfc subcompact="yes" ?>
 <?rfc sortrefs="no" ?>
 <?rfc strict="yes" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-00" obsoletes="" updates="" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-01" obsoletes="" updates="" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Content-ID-in-SIP">
       Content ID header field in Session Initiation Protocol (SIP)
@@ -276,10 +276,12 @@
         Changes in draft-ietf-sipcore-content-id-01:
         <list style="symbols">
           <t>
-            clean up of section 1, including shortening introduction and cleaning up of "body" and "body part" usages.
-          </t><t>
-            it is made clear that the SIP header fields forming the body part are not required to be present in the SIP message.
-          </t><t>
+            Clean up of section 1, including shortening introduction and cleaning up of "body" and "body part" usages.
+          </t>
+          <t>
+            Clarify that the SIP header fields forming the body part are not required to be present in the SIP message.
+          </t>
+          <t>
             MIME-Version header field included as one of the SIP header fields forming the body part;
           </t>
         </list>
