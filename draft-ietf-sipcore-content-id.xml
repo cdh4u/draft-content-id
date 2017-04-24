@@ -149,19 +149,17 @@
           <list style="symbols">
               <t>Specifies and registers the Content-ID header field as a SIP header field; and
               </t>
-              <t>Specifies that, when used as a SIP header field, the Content-ID header field identifies the
-              complete message-body, and metadata provided by some additional
+              <t>Specifies that, when used as a SIP header field, the Content-ID header field
+              identifies the complete message-body, and metadata provided by some additional
               SIP header fields, of the SIP message; and
               </t>
-              <t>Updates <xref target="RFC2045" pageno="false" format="default"/>
-              and <xref target="RFC5621" pageno="false" format="default"/>, to enable a Content-ID URL to
-              refer a complete message-body and metadata provided by some additional
-              SIP header fields.
+              <t>Updates <xref target="RFC5621" pageno="false" format="default"/>, to enable a
+              Content-ID URL to refer a complete message-body and metadata provided by some
+              additional SIP header fields.
               </t>
           </list>
         </t>
-        <t>NOTE: In <xref target="RFC2045" pageno="false" format="default"/>
-        and <xref target="RFC5621" pageno="false" format="default"/>, the Content-ID URL
+        <t>NOTE: In <xref target="RFC5621" pageno="false" format="default"/>, the Content-ID URL
         refers a specific body part only.
         </t>
       </section>
@@ -260,8 +258,35 @@
       </section>
     </section>
 
-    <section anchor="section.rfcupdate" title="Updates to RFC 2045 and RFC 5621">
-        <t>TODO</t>
+    <section anchor="section.rfcupdate" title="Update to RFC 5621">
+        <t>This section updates section 9.1 of <xref target="RFC5621" pageno="false"
+        format="default"/>, by allowing a Content-ID URL to reference a message-body
+        and the related metadata (<xref target="Content-ID-Semantic" pageno="false"
+        format="default"/>), in addition to allowing to reference to a body part. 
+        </t>
+        <figure>
+          <artwork><![CDATA[
+
+OLD TEXT:
+
+   Content-ID URLs allow creating references to body parts.  A given
+   Content-ID URL [RFC2392], which can appear in a header field or
+   within a body part (e.g., in an SDP attribute), points to a
+   particular body part.
+
+
+NEW TEXT:
+
+   Content-ID URLs allow creating references to body parts or
+   message-bodies (and the header fields describing the
+   message-bodies). A given Content-ID URL [RFC2392], which can appear
+   in a header field or within a body part (e.g., in an SDP attribute),
+   points to a particular body part or the message-body (and the
+   header fields describing the message-body).
+
+       ]]></artwork>
+        </figure>
+
     </section>
     <section anchor="section.sec" title="Security considerations">
       <t>
@@ -295,7 +320,15 @@
         [RFC EDITOR NOTE: Please remove this section when publishing]
       </t>
       <t>
-        TBD
+        Changes from draft-ietf-sipcore-content-id-01
+        <list style="symbols">
+          <t>
+             Update to RFC 5621 added.
+          </t>
+          <t>
+             Editorial changes.
+         </t>
+        </list>
       </t>
     </section>
   </middle>
