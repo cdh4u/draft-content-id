@@ -51,7 +51,7 @@
     <abstract>
       <t>
         This document specifies the Content-ID header field for usage in the Session Initiation Protocol (SIP).
-        The document also updates RFC 5621, to enable a Content-ID URL to refer a complete message-body and
+        The document also updates RFC 5621, to enable a Content-ID URL to a complete message-body and
         metadata provided by some additional SIP header fields.
       </t>
     </abstract>
@@ -84,7 +84,7 @@
       </section>
       <section title="Referring a body part" toc="default">
         <t>
-          A SIP header field can refer a body part using a Content-ID URL, as specified
+          A SIP header field can reference a body part using a Content-ID URL, as specified
           in <xref target="RFC5621" pageno="false" format="default"/>.
         </t><t>
           The Content-ID URL is specified in <xref target="RFC2392" pageno="false" format="default"/>.
@@ -107,7 +107,7 @@
       <section title="Problem statement" toc="default">
         <t>
           It is currently not specified how to uniquely identify a complete message-body of
-          a SIP message using a Content-ID header field, and how to refer a complete message-body
+          a SIP message using a Content-ID header field, and how to reference a complete message-body
           using a Content-ID URL.
         </t>
       </section>
@@ -156,7 +156,7 @@
               SIP header fields, of the SIP message; and
               </t>
               <t>Updates <xref target="RFC5621" pageno="false" format="default"/>, to enable a
-              Content-ID URL to refer a complete message-body and metadata provided by some
+              Content-ID URL to reference a complete message-body and metadata provided by some
               additional SIP header fields.
               </t>
           </list>
@@ -208,25 +208,12 @@
         the metadata provided by:
           <list style="symbols">
             <t>
-              the Content-ID header field itself;
-            </t><t>
               a MIME-Version header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Disposition header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Encoding header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Language header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Length header field, if included in the header fields of
               the SIP message; and
             </t><t>
-              a Content-Type header field, if included in the header fields of
-              the SIP message.
+              any 'Content-' prefixed header fields (including the Content-ID
+              header field itself), if included in the header fields of the
+              SIP message. 
             </t>
           </list>
         </t>
@@ -320,6 +307,14 @@ NEW TEXT:
     <section title="Change log">
       <t>
         [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        Changes from draft-ietf-sipcore-content-id-02
+        <list style="symbols">
+          <t>
+             Editorial changes based on comments from Paul Kyzivat.
+          </t>
+        </list>
       </t>
       <t>
         Changes from draft-ietf-sipcore-content-id-01
