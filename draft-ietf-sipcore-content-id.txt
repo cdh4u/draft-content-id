@@ -16,8 +16,8 @@ Abstract
 
    This document specifies the Content-ID header field for usage in the
    Session Initiation Protocol (SIP).  The document also updates RFC
-   5621, to enable a Content-ID URL to a complete message-body and
-   metadata provided by some additional SIP header fields.
+   5621, to enable a Content-ID URL to reference a complete message-body
+   and metadata provided by some additional SIP header fields.
 
 Status of This Memo
 
