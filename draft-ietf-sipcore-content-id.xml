@@ -111,9 +111,9 @@
           using a Content-ID URL.
         </t>
       </section>
-      <section title="Consequencies" toc="default">
+      <section title="Consequences" toc="default">
         <t>
-        The examples below shows the consequencies of the problem described above.
+        The examples below shows the consequences of the problem described above.
         </t>
         <section title="Example 1" toc="default">
           <t>
@@ -212,8 +212,8 @@
               the SIP message; and
             </t><t>
               any 'Content-' prefixed header fields (including the Content-ID
-              header field itself), if included in the header fields of the
-              SIP message. 
+              header field itself) included in the header fields of the
+              SIP message.
             </t>
           </list>
         </t>
