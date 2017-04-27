@@ -82,24 +82,24 @@
           <xref target="RFC2045" pageno="false" format="default"/>.
         </t>
       </section>
-      <section title="Referring a body part" toc="default">
+      <section title="Referencing a body part" toc="default">
         <t>
           A SIP header field can reference a body part using a Content-ID URL, as specified
           in <xref target="RFC5621" pageno="false" format="default"/>.
         </t><t>
           The Content-ID URL is specified in <xref target="RFC2392" pageno="false" format="default"/>.
           <xref target="RFC2392" pageno="false" format="default"/> specifies how to identify the body
-          part referred by a Content-ID URL. The Content-ID URL value is included in the Content-ID
+          part referenced by a Content-ID URL. The Content-ID URL value is included in the Content-ID
           header field of the body part.
         </t><t>
-          Examples of SIP header fields referring a body part using a Content-ID URL are:
+          Examples of SIP header fields referencing a body part using a Content-ID URL are:
           <list style="symbols">
             <t>
               <xref target="RFC6442" pageno="false" format="default"/> specifies how a Geolocation header
-              field refers a body part using a Content-ID URL, for providing location.
+              field references a body part using a Content-ID URL, for providing location.
             </t><t>
               <xref target="RFC5368" pageno="false" format="default"/> specifies how a Refer-To header field
-              refers a body part using a Content-ID URL, to provide a list of targets.
+              references a body part using a Content-ID URL, to provide a list of targets.
             </t>
           </list>
       </t>
@@ -124,7 +124,7 @@
             in the INVITE request. This content can be e.g. of the application/pidf+xml MIME type.
           </t><t>
             However, due to <xref target="RFC6442" pageno="false" format="default"/> requiring inclusion
-            of a Geolocation header field referring the body part with the location information,
+            of a Geolocation header field referencing the body part with the location information,
             the UAC includes a multipart message-body with single body part in the INVITE request, and
             includes the location information of application/pidf+xml MIME type and an associated
             Content-ID header field in the body part.
@@ -138,7 +138,7 @@
             application/resource-lists+xml MIME type.
           </t><t>
             However, due to <xref target="RFC5368" pageno="false" format="default"/> requiring
-            inclusion of a Refer-To header field referring the body part containing the list of targets,
+            inclusion of a Refer-To header field referencing the body part containing the list of targets,
             the UAC includes a multipart message-body with single body part in the REFER request,
             and includes the list of targets of application/resource-lists+xml MIME type and an
             associated Content-ID header field in the body part.
@@ -162,7 +162,7 @@
           </list>
         </t>
         <t>NOTE: In <xref target="RFC5621" pageno="false" format="default"/>, the Content-ID URL
-        refers a specific body part only.
+        references a specific body part only.
         </t>
       </section>
     </section>
