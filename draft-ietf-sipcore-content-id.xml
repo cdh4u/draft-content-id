@@ -51,7 +51,7 @@
     <abstract>
       <t>
         This document specifies the Content-ID header field for usage in the Session Initiation Protocol (SIP).
-        The document also updates RFC 5621, to enable a Content-ID URL to refer a complete message-body and
+        The document also updates RFC 5621, to enable a Content-ID URL to reference a complete message-body and
         metadata provided by some additional SIP header fields.
       </t>
     </abstract>
@@ -82,24 +82,24 @@
           <xref target="RFC2045" pageno="false" format="default"/>.
         </t>
       </section>
-      <section title="Referring a body part" toc="default">
+      <section title="Referencing a body part" toc="default">
         <t>
-          A SIP header field can refer a body part using a Content-ID URL, as specified
+          A SIP header field can reference a body part using a Content-ID URL, as specified
           in <xref target="RFC5621" pageno="false" format="default"/>.
         </t><t>
           The Content-ID URL is specified in <xref target="RFC2392" pageno="false" format="default"/>.
           <xref target="RFC2392" pageno="false" format="default"/> specifies how to identify the body
-          part referred by a Content-ID URL. The Content-ID URL value is included in the Content-ID
+          part referenced by a Content-ID URL. The Content-ID URL value is included in the Content-ID
           header field of the body part.
         </t><t>
-          Examples of SIP header fields referring a body part using a Content-ID URL are:
+          Examples of SIP header fields referencing a body part using a Content-ID URL are:
           <list style="symbols">
             <t>
               <xref target="RFC6442" pageno="false" format="default"/> specifies how a Geolocation header
-              field refers a body part using a Content-ID URL, for providing location.
+              field references a body part using a Content-ID URL, for providing location.
             </t><t>
               <xref target="RFC5368" pageno="false" format="default"/> specifies how a Refer-To header field
-              refers a body part using a Content-ID URL, to provide a list of targets.
+              references a body part using a Content-ID URL, to provide a list of targets.
             </t>
           </list>
       </t>
@@ -107,13 +107,13 @@
       <section title="Problem statement" toc="default">
         <t>
           It is currently not specified how to uniquely identify a complete message-body of
-          a SIP message using a Content-ID header field, and how to refer a complete message-body
+          a SIP message using a Content-ID header field, and how to reference a complete message-body
           using a Content-ID URL.
         </t>
       </section>
-      <section title="Consequencies" toc="default">
+      <section title="Consequences" toc="default">
         <t>
-        The examples below shows the consequencies of the problem described above.
+        The examples below shows the consequences of the problem described above.
         </t>
         <section title="Example 1" toc="default">
           <t>
@@ -124,7 +124,7 @@
             in the INVITE request. This content can be e.g. of the application/pidf+xml MIME type.
           </t><t>
             However, due to <xref target="RFC6442" pageno="false" format="default"/> requiring inclusion
-            of a Geolocation header field referring the body part with the location information,
+            of a Geolocation header field referencing the body part with the location information,
             the UAC includes a multipart message-body with single body part in the INVITE request, and
             includes the location information of application/pidf+xml MIME type and an associated
             Content-ID header field in the body part.
@@ -138,7 +138,7 @@
             application/resource-lists+xml MIME type.
           </t><t>
             However, due to <xref target="RFC5368" pageno="false" format="default"/> requiring
-            inclusion of a Refer-To header field referring the body part containing the list of targets,
+            inclusion of a Refer-To header field referencing the body part containing the list of targets,
             the UAC includes a multipart message-body with single body part in the REFER request,
             and includes the list of targets of application/resource-lists+xml MIME type and an
             associated Content-ID header field in the body part.
@@ -156,13 +156,13 @@
               SIP header fields, of the SIP message; and
               </t>
               <t>Updates <xref target="RFC5621" pageno="false" format="default"/>, to enable a
-              Content-ID URL to refer a complete message-body and metadata provided by some
+              Content-ID URL to reference a complete message-body and metadata provided by some
               additional SIP header fields.
               </t>
           </list>
         </t>
         <t>NOTE: In <xref target="RFC5621" pageno="false" format="default"/>, the Content-ID URL
-        refers a specific body part only.
+        references a specific body part only.
         </t>
       </section>
     </section>
@@ -208,25 +208,12 @@
         the metadata provided by:
           <list style="symbols">
             <t>
-              the Content-ID header field itself;
-            </t><t>
               a MIME-Version header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Disposition header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Encoding header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Language header field, if included in the header fields of
-              the SIP message;
-            </t><t>
-              a Content-Length header field, if included in the header fields of
               the SIP message; and
             </t><t>
-              a Content-Type header field, if included in the header fields of
-              the SIP message.
+              any 'Content-' prefixed header fields (including the Content-ID
+              header field itself) included in the header fields of the
+              SIP message.
             </t>
           </list>
         </t>
@@ -264,7 +251,7 @@
         <t>This section updates section 9.1 of <xref target="RFC5621" pageno="false"
         format="default"/>, by allowing a Content-ID URL to reference a message-body
         and the related metadata (<xref target="Content-ID-Semantic" pageno="false"
-        format="default"/>), in addition to allowing to reference to a body part. 
+        format="default"/>), in addition to allowing a reference to a body part.
         </t>
         <figure>
           <artwork><![CDATA[
@@ -320,6 +307,14 @@ NEW TEXT:
     <section title="Change log">
       <t>
         [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        Changes from draft-ietf-sipcore-content-id-02
+        <list style="symbols">
+          <t>
+             Editorial changes based on comments from Paul Kyzivat.
+          </t>
+        </list>
       </t>
       <t>
         Changes from draft-ietf-sipcore-content-id-01
