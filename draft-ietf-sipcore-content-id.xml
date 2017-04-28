@@ -251,7 +251,7 @@
         <t>This section updates section 9.1 of <xref target="RFC5621" pageno="false"
         format="default"/>, by allowing a Content-ID URL to reference a message-body
         and the related metadata (<xref target="Content-ID-Semantic" pageno="false"
-        format="default"/>), in addition to allowing to reference to a body part. 
+        format="default"/>), in addition to allowing a reference to a body part.
         </t>
         <figure>
           <artwork><![CDATA[
