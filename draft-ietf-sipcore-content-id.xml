@@ -134,7 +134,7 @@
           <t>
             If a UAC sends an REFER request including a list of targets as specified in
             <xref target="RFC5368" pageno="false" format="default"/>, then the UAC needs to
-            include only one MIME entity part in the REFER request. This content is of the
+            include only one MIME entity in the REFER request. This content is of the
             application/resource-lists+xml MIME type.
           </t><t>
             However, due to <xref target="RFC5368" pageno="false" format="default"/> requiring
