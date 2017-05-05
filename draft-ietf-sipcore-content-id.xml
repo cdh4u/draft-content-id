@@ -120,7 +120,7 @@
             If a UAC sends an INVITE request conveying location as specified in
             <xref target="RFC6442" pageno="false" format="default"/>,
             if the UAC decides not to include an SDP offer, and if the location
-            is conveyed by value, then the UAC needs to include one content only
+            is conveyed by value, then the UAC needs to include only one body part
             in the INVITE request. This content can be e.g. of the application/pidf+xml MIME type.
           </t><t>
             However, due to <xref target="RFC6442" pageno="false" format="default"/> requiring inclusion
@@ -134,7 +134,7 @@
           <t>
             If a UAC sends an REFER request including a list of targets as specified in
             <xref target="RFC5368" pageno="false" format="default"/>, then the UAC needs to
-            include one content only in the REFER request. This content is of the
+            include only one body part in the REFER request. This content is of the
             application/resource-lists+xml MIME type.
           </t><t>
             However, due to <xref target="RFC5368" pageno="false" format="default"/> requiring
@@ -184,7 +184,7 @@
 
       <section anchor="Content-ID-Syntax" title="Syntax">
         <t>
-          The ABNF for the Content-ID header fields is:
+          The ABNF <xref target="RFC5234"></xref> for the Content-ID header field is:
         </t>
         <figure>
           <artwork><![CDATA[
@@ -193,7 +193,8 @@
 
    msg-id     = "<" id-left "@" id-right ">"
 
-   NOTE: id-left and id-right are specified in [RFC5322].
+   NOTE: id-left and id-right are specified in [RFC5322]. HCOLON is
+   defined in [RFC3261].
 
    NOTE: When used in a SIP header field, the msg-id syntax has been
    simplified compared to the syntax in [RFC5322].
@@ -225,10 +226,10 @@
       <section anchor="Content-ID-Procedures" title="Procedures">
         <section anchor="Content-ID-UA-Procedures" title="UA procedures">
           <t>
-            A UA MAY include a Content-ID header field in any SIP message which is allowed
+            A UA MAY include a Content-ID header field in any SIP message that is allowed
             to contain a message-body.
           </t><t>
-            A UA MUST NOT include a Content-ID header field in any SIP message which is
+            A UA MUST NOT include a Content-ID header field in any SIP message that is
             not allowed to contain a message-body.
           </t><t>
             The UA MUST set the value of the Content-ID header field to a globally unique
@@ -292,14 +293,19 @@ NEW TEXT:
         in <xref target="RFC3261" pageno="false" format="default"/>.
       </t>
       <section anchor="section.iana.header" title="Header field">
+        <t>
+          The header field described in <xref target="Content-ID"/> has been registered
+          in the "Header Fields" sub-registry of the "Session Initiation Protocol (SIP)
+          Parameters" registry by adding a row with these values:
+        </t>
         <t>[RFC EDITOR NOTE: Please replace XXXX with the RFC number of this document when publishing]</t>
         <figure>
           <artwork><![CDATA[
-   RFC Number:  RFC XXXX
+   Header Name:  Content-ID
 
-   Header Field Name:  Content-ID
+   compact:
 
-   Compact Form:  none
+   Reference:  RFCXXXX
        ]]></artwork>
         </figure>
       </section>
@@ -307,6 +313,20 @@ NEW TEXT:
     <section title="Change log">
       <t>
         [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        Changes from draft-ietf-sipcore-content-id-03
+        <list style="symbols">
+          <t>
+             Changes based on doc shepard review:
+          </t>
+          <t>
+              - Reference to RFC 5234 added.
+          </t>
+          <t>
+              - Editorial changes.
+          </t>
+        </list>
       </t>
       <t>
         Changes from draft-ietf-sipcore-content-id-02
@@ -334,6 +354,7 @@ NEW TEXT:
       <?rfc include="reference.RFC.2045"?>
       <?rfc include="reference.RFC.2119"?>
       <?rfc include="reference.RFC.2392"?>
+      <?rfc include="reference.RFC.5234"?>
       <?rfc include="reference.RFC.5322"?>
       <?rfc include="reference.RFC.3261"?>
       <?rfc include="reference.RFC.5368"?>
