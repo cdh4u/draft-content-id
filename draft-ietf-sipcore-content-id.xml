@@ -14,7 +14,7 @@
 <?rfc subcompact="yes" ?>
 <?rfc sortrefs="no" ?>
 <?rfc strict="yes" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-04" obsoletes="" updates="5621" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-05" obsoletes="" updates="5621" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Content-ID in SIP">
       Content-ID header field in Session Initiation Protocol (SIP)
@@ -121,7 +121,7 @@
             <xref target="RFC6442" pageno="false" format="default"/>,
             if the UAC decides not to include an SDP offer, and if the location
             is conveyed by value, then the UAC needs to include only one MIME entity
-            in the INVITE request. This content can be e.g. of the application/pidf+xml MIME type.
+            in the INVITE request. This MIME entity can be e.g. of the application/pidf+xml MIME type.
           </t><t>
             However, due to <xref target="RFC6442" pageno="false" format="default"/> requiring inclusion
             of a Geolocation header field referencing the body part with the location information,
@@ -134,7 +134,7 @@
           <t>
             If a UAC sends an REFER request including a list of targets as specified in
             <xref target="RFC5368" pageno="false" format="default"/>, then the UAC needs to
-            include only one MIME entity in the REFER request. This content is of the
+            include only one MIME entity in the REFER request. This MIME entity is of the
             application/resource-lists+xml MIME type.
           </t><t>
             However, due to <xref target="RFC5368" pageno="false" format="default"/> requiring
@@ -313,6 +313,14 @@ NEW TEXT:
     <section title="Change log">
       <t>
         [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        Changes from draft-ietf-sipcore-content-id-04
+        <list style="symbols">
+          <t>
+             Minor editorial fix.
+          </t>
+        </list>
       </t>
       <t>
         Changes from draft-ietf-sipcore-content-id-03
