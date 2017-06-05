@@ -110,6 +110,10 @@
           a SIP message using a Content-ID header field, and how to reference a complete message-body
           using a Content-ID URL.
         </t>
+        <t>
+          NOTE: In <xref target="RFC5621" pageno="false" format="default"/>, the Content-ID URL
+          references a specific body part only.
+        </t>
       </section>
       <section title="Consequences" toc="default">
         <t>
@@ -161,9 +165,6 @@
               </t>
           </list>
         </t>
-        <t>NOTE: In <xref target="RFC5621" pageno="false" format="default"/>, the Content-ID URL
-        references a specific body part only.
-        </t>
       </section>
     </section>
 
@@ -197,7 +198,14 @@
    defined in [RFC3261].
 
    NOTE: When used in a SIP header field, the msg-id syntax has been
-   simplified compared to the syntax in [RFC5322].
+   simplified, compared to the syntax in [RFC5322], to disallow the use
+   of comments and to adopt to the SIP usage of leading white space.
+
+   The value of Content-Id header field value must be unique in the
+   context of a given SIP message, including any embedded MIME
+   Content-Id header field values. Note that the SIP Content-ID header
+   field value is not expected to be unique among all SIP messages; it
+   has no meaning outside of the message in which it is included.
 
        ]]></artwork>
         </figure>
@@ -244,6 +252,48 @@
           </t><t>
             A proxy MUST NOT delete a Content-ID header field from a SIP message.
           </t>
+        </section>
+        <section anchor="Content-ID-example-Procedures" title="Example">
+          <t>
+            The figure shows an example from <xref target="RFC5368" pageno="false"
+            format="default"/>, where the SIP Content-ID header field is used to
+            reference the message body (non-multipart) of a SIP message.
+          </t>
+          <figure>
+            <artwork><![CDATA[
+
+REFER sip:conf-123@example.com;gruu;opaque=hha9s8d-999a  SIP/2.0
+Via: SIP/2.0/TCP client.chicago.example.com
+        ;branch=z9hG4bKhjhs8ass83
+Max-Forwards: 70
+To: "Conference 123" <sip:conf-123@example.com>
+From: Carol <sip:carol@chicago.example.com>;tag=32331
+Call-ID: d432fa84b4c76e66710
+CSeq: 2 REFER
+Contact: <sip:carol@client.chicago.example.com>
+Refer-To: <cid:cn35t8jf02@example.com>
+Refer-Sub: false
+Require: multiple-refer, norefersub
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY
+Allow-Events: dialog
+Accept: application/sdp, message/sipfrag
+Content-Type: application/resource-lists+xml
+Content-Disposition: recipient-list
+Content-Length: 362
+Content-ID: <cn35t8jf02@example.com>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<resource-lists xmlns="urn:ietf:params:xml:ns:resource-lists"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <list>
+    <entry uri="sip:bill@example.com?method=BYE" />
+    <entry uri="sip:joe@example.org?method=BYE" />
+    <entry uri="sip:ted@example.net?method=BYE" />
+  </list>
+</resource-lists>
+
+         ]]></artwork>
+          </figure>
         </section>
       </section>
     </section>
@@ -315,6 +365,18 @@ NEW TEXT:
         [RFC EDITOR NOTE: Please remove this section when publishing]
       </t>
       <t>
+        Changes from draft-ietf-sipcore-content-id-05
+        <list style="symbols">
+          <t>
+             Changes based on AD comments from Ben Campell:
+          </t>
+          <t>
+              - Clarifying that Content-ID header field value is unique within
+              the scope of a SIP message.
+          </t>
+        </list>
+      </t>
+      <t>
         Changes from draft-ietf-sipcore-content-id-04
         <list style="symbols">
           <t>
@@ -330,6 +392,9 @@ NEW TEXT:
           </t>
           <t>
               - Reference to RFC 5234 added.
+          </t>
+          <t>
+              - SIP message example added.
           </t>
           <t>
               - Editorial changes.
