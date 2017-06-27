@@ -51,8 +51,9 @@
     <abstract>
       <t>
         This document specifies the Content-ID header field for usage in the Session Initiation Protocol (SIP).
-        The document also updates RFC 5621, to enable a Content-ID URL to reference a complete message-body and
-        metadata provided by some additional SIP header fields.
+        The document  also updates RFC 5621, which only allows a Content-ID URL to reference a body-part that is
+        part of a multipart message-body. This update enables a Content-ID URL to reference a complete message-body
+        and metadata provided by some additional SIP header fields.
       </t>
     </abstract>
   </front>
@@ -96,7 +97,7 @@
           <list style="symbols">
             <t>
               <xref target="RFC6442" pageno="false" format="default"/> specifies how a Geolocation header
-              field references a body part using a Content-ID URL, for providing location.
+              field references a body part using a Content-ID URL, for providing location information.
             </t><t>
               <xref target="RFC5368" pageno="false" format="default"/> specifies how a Refer-To header field
               references a body part using a Content-ID URL, to provide a list of targets.
@@ -121,11 +122,11 @@
         </t>
         <section title="Example 1" toc="default">
           <t>
-            If a UAC sends an INVITE request conveying location as specified in
+            If a User Agent Client (UAC) sends an INVITE request conveying location as specified in
             <xref target="RFC6442" pageno="false" format="default"/>,
             if the UAC decides not to include an SDP offer, and if the location
             is conveyed by value, then the UAC needs to include only one MIME entity
-            in the INVITE request. This MIME entity can be e.g. of the application/pidf+xml MIME type.
+            in the INVITE request. This MIME entity can be, for example, of the application/pidf+xml MIME type.
           </t><t>
             However, due to <xref target="RFC6442" pageno="false" format="default"/> requiring inclusion
             of a Geolocation header field referencing the body part with the location information,
@@ -230,9 +231,13 @@
           The Content-ID header field can be included in any SIP message which
           is allowed to contain a message-body.
         </t>
+        <t>
+          NOTE: The message body identified by the Content-ID header field can be a
+          non-multipart message-body or a multipart message-body.
+        </t>
       </section>
       <section anchor="Content-ID-Procedures" title="Procedures">
-        <section anchor="Content-ID-UA-Procedures" title="UA procedures">
+        <section anchor="Content-ID-UA-Procedures" title="User Agent (UA) procedures">
           <t>
             A UA MAY include a Content-ID header field in any SIP message that is allowed
             to contain a message-body.
@@ -240,8 +245,8 @@
             A UA MUST NOT include a Content-ID header field in any SIP message that is
             not allowed to contain a message-body.
           </t><t>
-            The UA MUST set the value of the Content-ID header field to a globally unique
-            value.
+            The UA MUST set the value of the Content-ID header field to a value that
+            is unique in the context of the SIP message.
           </t>
         </section>
         <section anchor="Content-ID-proxy-Procedures" title="Proxy procedures">
@@ -317,7 +322,7 @@ OLD TEXT:
 
 NEW TEXT:
 
-   Content-ID URLs allow creating references to body parts or
+   Content-ID URLs allow the creation of references to body parts or
    message-bodies (and the header fields describing the
    message-bodies). A given Content-ID URL [RFC2392], which can appear
    in a header field or within a body part (e.g., in an SDP attribute),
@@ -363,6 +368,14 @@ NEW TEXT:
     <section title="Change log">
       <t>
         [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        Changes from draft-ietf-sipcore-content-id-06
+        <list style="symbols">
+          <t>
+             Editorial changes and clarifications based on Gen-ART review from Elwyn Davies.
+          </t>
+        </list>
       </t>
       <t>
         Changes from draft-ietf-sipcore-content-id-05
