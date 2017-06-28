@@ -14,7 +14,7 @@
 <?rfc subcompact="yes" ?>
 <?rfc sortrefs="no" ?>
 <?rfc strict="yes" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-06" obsoletes="" updates="5621" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-07" obsoletes="" updates="5621" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Content-ID in SIP">
       Content-ID header field in Session Initiation Protocol (SIP)
