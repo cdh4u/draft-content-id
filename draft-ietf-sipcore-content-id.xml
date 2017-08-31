@@ -353,8 +353,8 @@
           is allowed to contain a message-body.
         </t>
         <t>
-          NOTE: The  identified by the Content-ID header field can be a
-          non-multipart message-body or a multipart message-body.
+          NOTE: The message-body identified by the Content-ID header field can
+          be a non-multipart message-body or a multipart message-body. 
         </t>
       </section>
       <section anchor="Content-ID-Procedures" title="Procedures">
@@ -430,7 +430,7 @@ Content-ID: <cn35t8jf02@example.com>
             <xref target="RFC5368" pageno="false" format="default"/>,
             by allowing usage of either a MIME Content-ID header field
             or a SIP Content-ID header field to label the body part or
-            message-body carrying the URI list.
+            the message-body carrying the URI list.
         </t>
         <figure>
           <artwork><![CDATA[
@@ -493,7 +493,7 @@ NEW TEXT:
         <t>This section updates the second paragraph in section 3.1 of
         <xref target="RFC6442" pageno="false" format="default"/>, by allowing
         usage of either a MIME Content-ID header field or a SIP Content-ID header field
-        to label the body part carrying the location data.
+        to label the body part or the message-body carrying the location data.
         </t>
         <figure>
           <artwork><![CDATA[
