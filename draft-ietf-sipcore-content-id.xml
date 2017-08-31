@@ -354,7 +354,7 @@
         </t>
         <t>
           NOTE: The message-body identified by the Content-ID header field can
-          be a non-multipart message-body or a multipart message-body. 
+          be a non-multipart message-body or a multipart message-body.
         </t>
       </section>
       <section anchor="Content-ID-Procedures" title="Procedures">
@@ -452,7 +452,8 @@ NEW TEXT:
    or message-body that carries the URI list. The REFER-Issuer SHOULD NOT
    include any particular URI more than once in the URI list. The REFER
    request can use either a MIME Content-ID header field [RFC4483] or a
-   SIP Content-ID header field [RFCXXXX] to label the body part.
+   SIP Content-ID header field [RFCXXXX] to label the body part or the
+   message-body.
 
 
        ]]></artwork>
