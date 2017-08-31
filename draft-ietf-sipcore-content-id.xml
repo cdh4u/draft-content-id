@@ -119,15 +119,9 @@
           references a specific body part only.
         </t>
         <t>
-          Some existing specifications, for example <xref target="RFC5368" pageno="false" format="default"/>
-          and <xref target="RFC6080" pageno="false" format="default"/>, contain examples that show
-          usage of a SIP Content-ID header field referencing a complete message-body, eventhough
-          such usage has never been specified.
-        </t>
-        <t>
-           <xref target="RFC5368" pageno="false" format="default"/> and <xref target="RFC6080" pageno="false" 
-           format="default"/> contain examples that show usage of a SIP Content-ID header field referencing
-           a complete message-body, eventhough such usage had not been specified when those RFCs were published.
+          Some existing specifications, for example <xref target="RFC5368" pageno="false" format="default"/>, 
+          contain examples that show usage of a SIP Content-ID header field referencing a complete message-body, 
+          eventhough such usage has never been specified.
         </t>
       </section>
       <section title="Consequences" toc="default">
@@ -286,11 +280,12 @@
         </t>
       </section>
       <section title="Backward compatibility" toc="default">
-        <t>
-            If an existing specification explicitly defines the usage of a multipart message body
-            for carrying a single body part, that specification MUST be updated in order to allow
-            usage of a non-multipart message body for carrying the body part, and for referencing the
-            whole message body using a Content-ID URL.
+        <t>            
+            If an existing specification explicitly defines the usage of a	
+            multipart message-body for carrying a single body part, that	
+            specification MUST be updated in order to allow usage of a non-	
+            multipart message-body for carrying the MIME entity, and for	
+            referencing the whole message-body using a Content-ID URL.	
         </t>
       </section>
     </section>
@@ -430,10 +425,12 @@ Content-ID: <cn35t8jf02@example.com>
     </section>
 
     <section anchor="section.rfcupdate.5368" title="Update to RFC 5368">
-        <t>This section updates the second paragraph in section 7 of 
-        <xref target="RFC5368" pageno="false" format="default"/>, by allowing 
-        usage of either a MIME Content-ID header field or a SIP Content-ID header field 
-        to label the body-part carrying the URI list.
+        <t>
+            This section updates the second paragraph in section 7 of 
+            <xref target="RFC5368" pageno="false" format="default"/>,	
+            by allowing usage of either a MIME Content-ID header field 
+            or a SIP Content-ID header field to label the body-part or 
+            message-body carrying the URI list.
         </t>
         <figure>
           <artwork><![CDATA[
@@ -452,10 +449,10 @@ NEW TEXT:
    The Refer-To header field of a REFER request with multiple REFER-
    Targets MUST contain a pointer (i.e., a Content-ID Uniform Resource
    Locator (URL) as per RFC 2392 [RFC2392]) that points to the body part
-   that carries the URI list. The REFER-Issuer SHOULD NOT include any
-   particular URI more than once in the URI list. The REFER request can
-   use either a MIME Content-ID header field [RFC4483] or a SIP Content-ID
-   header field [RFCXXXX] to label the body-part.
+   or message-body that carries the URI list. The REFER-Issuer SHOULD NOT 
+   include any particular URI more than once in the URI list. The REFER 
+   request can use either a MIME Content-ID header field [RFC4483] or a 
+   SIP Content-ID header field [RFCXXXX] to label the body-part.
    
 
        ]]></artwork>
