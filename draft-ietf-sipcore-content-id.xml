@@ -14,7 +14,7 @@
 <?rfc subcompact="yes" ?>
 <?rfc sortrefs="no" ?>
 <?rfc strict="yes" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-07" obsoletes="" updates="5621, 5368, 6442" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-08" obsoletes="" updates="5621, 5368, 6442" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Content-ID in SIP">
       Content-ID header field in Session Initiation Protocol (SIP)
@@ -281,11 +281,11 @@
       </section>
       <section title="Backward compatibility" toc="default">
         <t>
-            If an existing specification explicitly defines the usage of a
-            multipart message-body for carrying a single body part, that
-            specification MUST be updated in order to allow usage of a non-
-            multipart message-body for carrying the MIME entity, and for
-            referencing the whole message-body using a Content-ID URL.
+            If an existing specification only defines the usage of a
+            multipart message-body for carrying a single body part to be referenced
+            by a Content-ID URL, implementations MUST NOT carry the MIME entity
+            in a non-multipart message-body unless the specification is updated
+            to explicitly allow it.
         </t>
       </section>
     </section>
@@ -449,11 +449,11 @@ NEW TEXT:
    The Refer-To header field of a REFER request with multiple REFER-
    Targets MUST contain a pointer (i.e., a Content-ID Uniform Resource
    Locator (URL) as per RFC 2392 [RFC2392]) that points to the body part
-   or message-body that carries the URI list. The REFER-Issuer SHOULD NOT
-   include any particular URI more than once in the URI list. The REFER
-   request can use either a MIME Content-ID header field [RFC4483] or a
-   SIP Content-ID header field [RFCXXXX] to label the body part or the
-   message-body.
+   or message-body that carries the URI list. The REFER-Issuer SHOULD
+   NOT include any particular URI more than once in the URI list. The
+   REFER request can use either a MIME Content-ID header field [RFC4483]
+   or a SIP Content-ID header field [RFCXXXX] to label the body part or
+   the message-body.
 
 
        ]]></artwork>
@@ -521,12 +521,12 @@ NEW TEXT:
    A Location Object appears by-value in the initial SIP request as a
    MIME body, and Bob responds to that SIP request as appropriate.
    Either a MIME Content-ID header field [RFC4483] or the SIP Content-ID
-   header field [RFCXXXX] MUST be used to label the location information.
-   There is a 'Bad Location Information' response code introduced within
-   this document to specifically inform Alice if she conveys bad
-   location to Bob (e.g., Bob "cannot parse the location provided", or
-   "there is not enough location information to determine where Alice
-   is").
+   header field [RFCXXXX] MUST be used to label the location
+   information. There is a 'Bad Location Information' response code
+   introduced within this document to specifically inform Alice if she
+   conveys bad location to Bob (e.g., Bob "cannot parse the location
+   provided", or "there is not enough location information to determine
+   where Alice is").
 
 
        ]]></artwork>
@@ -568,6 +568,14 @@ NEW TEXT:
     <section title="Change log">
       <t>
         [RFC EDITOR NOTE: Please remove this section when publishing]
+      </t>
+      <t>
+        Changes from draft-ietf-sipcore-content-id-08
+        <list style="symbols">
+          <t>
+             Editorial change based on comment from Ben Campbell.
+          </t>
+        </list>
       </t>
       <t>
         Changes from draft-ietf-sipcore-content-id-07
