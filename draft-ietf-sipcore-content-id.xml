@@ -14,7 +14,7 @@
 <?rfc subcompact="yes" ?>
 <?rfc sortrefs="no" ?>
 <?rfc strict="yes" ?>
-<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-09" obsoletes="" updates="5621, 5368, 6442" submissionType="IETF" xml:lang="en">
+<rfc ipr="trust200902" category="std" docName="draft-ietf-sipcore-content-id-10" obsoletes="" updates="5621, 5368, 6442" submissionType="IETF" xml:lang="en">
   <front>
     <title abbrev="Content-ID in SIP">
       Content-ID header field in Session Initiation Protocol (SIP)
@@ -119,9 +119,12 @@
           references a specific body part only.
         </t>
         <t>
-          Some existing specifications, for example <xref target="RFC5368" pageno="false" format="default"/>,
-          contain examples that show usage of a SIP Content-ID header field referencing a complete message-body,
-          eventhough such usage has never been specified.
+            Some existing specifications, such as <xref target="RFC5368" pageno="false" format="default"/>, 
+            contain examples that show usage of a SIP Content-ID header field referencing a complete 
+            message-body, even though such usage has never been specified. Many implementors have 
+            interpreted these examples to indicate that such usage is allowed by the corresponding 
+            specification, despite the absence of language allowing it. This document updates the normative 
+            language in the affected documents to explicitly allow such usage.
         </t>
       </section>
       <section title="Consequences" toc="default">
@@ -570,6 +573,14 @@ NEW TEXT:
         [RFC EDITOR NOTE: Please remove this section when publishing]
       </t>
       <t>
+        Changes from draft-ietf-sipcore-content-id-09
+        <list style="symbols">
+          <t>
+             Editorial change based on comment from Adam Roach.
+          </t>
+        </list>
+      </t>
+      <t>
         Changes from draft-ietf-sipcore-content-id-08
         <list style="symbols">
           <t>
@@ -600,7 +611,7 @@ NEW TEXT:
         Changes from draft-ietf-sipcore-content-id-05
         <list style="symbols">
           <t>
-             Changes based on AD comments from Ben Campell:
+             Changes based on AD comments from Ben Campbell:
           </t>
           <t>
               - Clarifying that Content-ID header field value is unique within
@@ -620,7 +631,7 @@ NEW TEXT:
         Changes from draft-ietf-sipcore-content-id-03
         <list style="symbols">
           <t>
-             Changes based on doc shepard review:
+             Changes based on doc shepherd review:
           </t>
           <t>
               - Reference to RFC 5234 added.
